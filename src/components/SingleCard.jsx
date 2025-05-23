@@ -1,41 +1,23 @@
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import SingleCard from "../components/SingleCard";
-import Button from "../components/Button";
+import Button from "./Button";
+import { useNavigate, useParams } from "react-router-dom";
 
-
-function SinglePage() {
+function SingleCard({book}){
+  const id = useParams()
   const navigate = useNavigate();
-  const  {id}  = useParams();
-  const [book,setBook] = useState({})
-  console.log(id);
-  // Fetch the book details using the id
-  const fetchBook = async ()=>{
-   const response = await axios.get(`http://localhost:3000/api/books/${id}`)
-   setBook(response.data.datas)  
-  }
-  useEffect(()=>{
-    fetchBook();
-  },[])
-
   const deleteBook = async()=>{
-    const response = await axios.delete(`http://localhost:3000/api/books/${id}`)
-
-    if(response.status === 200){
-      navigate("/");
-      alert("Book deleted successfully")
-    }else{
-      alert("Failed to delete book")
+      const response = await axios.delete(`http://localhost:3000/api/books/${id}`)
+  
+      if(response.status === 200){
+        navigate("/");
+        alert("Book deleted successfully")
+      }else{
+        alert("Failed to delete book")
+      }
     }
-  }
-  return ( 
+  return(
     <>
-      <Navbar/>
-      {/* <SingleCard book={book} key={book.id}/> */}
-      {/* <button onClick={deleteBook}>Delete Book</button> */}
-      <div className="bg-white dark:bg-gray-800 h-screen">
+ <div className="bg-white dark:bg-gray-800 h-screen">
   <div className="relative pt-8">
     <div className="absolute inset-0 h-1/2 bg-gray-100 dark:bg-gray-700" />
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,9 +73,10 @@ function SinglePage() {
     </div>
   </div>
 </div>
-     
+
+  
     </>
-  );
+  )
 }
 
-export default SinglePage;
+export default SingleCard;
