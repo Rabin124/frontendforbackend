@@ -6,7 +6,7 @@ function SingleCard({book}){
   const id = useParams()
   const navigate = useNavigate();
   const deleteBook = async()=>{
-      const response = await axios.delete(`http://localhost:3000/api/books/${id}`)
+      const response = await axios.delete(`https://pern-book-management-system.onrender.com/api/books/${id}`)
   
       if(response.status === 200){
         navigate("/");

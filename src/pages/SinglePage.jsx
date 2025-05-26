@@ -12,7 +12,7 @@ function SinglePage() {
   console.log(id);
   // Fetch the book details using the id
   const fetchBook = async () => {
-    const response = await axios.get(`http://localhost:3000/api/books/${id}`);
+    const response = await axios.get(`https://pern-book-management-system.onrender.com/api/books/${id}`);
     setBook(response.data.datas);
   };
   useEffect(() => {
@@ -21,7 +21,7 @@ function SinglePage() {
 
   const deleteBook = async () => {
     const response = await axios.delete(
-      `http://localhost:3000/api/books/${id}`
+      `https://pern-book-management-system.onrender.com/api/books/${id}`
     );
 
     if (response.status === 200) {

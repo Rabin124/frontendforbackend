@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";import axios from "axios"
 function HomePage() {
   const [books, setBooks] = useState([]);
   const fetchBooks = async ()=>{
-   const response = await axios.get("http://localhost:3000/api/books/")
+   const response = await axios.get("https://pern-book-management-system.onrender.com/api/books/")
    setBooks(response.data.datas);
   }
   useEffect(()=>{

@@ -8,7 +8,7 @@ function EditPage() {
   const { id } = useParams();
   const [book, setBook] = useState({});
   const fetchBook = async () => {
-    const response = await axios.get(`http://localhost:3000/api/books/${id}`);
+    const response = await axios.get(`https://pern-book-management-system.onrender.com/api/books/${id}`);
     setBook(response.data.datas);
   };
   useEffect(() => {
@@ -24,7 +24,7 @@ function EditPage() {
   const editBook = async (event) => {
     event.preventDefault();
     const response = await axios.patch(
-      "http://localhost:3000/api/books/" + id,
+      "https://pern-book-management-system.onrender.com/api/books/" + id,
       book
     );
     if (response.status == 200) {

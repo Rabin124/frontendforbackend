@@ -25,7 +25,7 @@ function Form() {
   const createBook = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/books", bookData);
+      const response = await axios.post("https://pern-book-management-system.onrender.com/api/books", bookData);
       // console.log(response);
       if (response.status === 200) {
         navigate("/");
